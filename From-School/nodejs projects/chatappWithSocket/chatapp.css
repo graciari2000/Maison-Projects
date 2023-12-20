@@ -5,7 +5,7 @@ body {
     background-color: #f4f4f4;
 }
 
-#messages {
+ul {
     list-style-type: none;
     margin: 0;
     padding: 20px;
