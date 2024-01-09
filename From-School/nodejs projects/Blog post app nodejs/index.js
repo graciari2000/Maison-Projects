@@ -1,17 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const routes = require('./Routes/postRoutes.js');
+const postRoutes = require('./routes/postRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/', {
+mongoose.connect('mongodb://localhost:27017/Atelier4', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
 // Routes
-app.use('/posts', routes.posts);
-app.use('/post', routes.post);
+app.use('/posts', postRoutes.posts);
 
 // Default Route for handling incorrect routes
 app.use((req, res, next) => {

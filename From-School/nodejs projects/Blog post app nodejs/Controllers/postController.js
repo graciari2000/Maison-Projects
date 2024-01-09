@@ -1,4 +1,4 @@
-const Post = require('From-School/nodejs projects/Blog post app nodejs/Models/postModel.js');
+const Post = require('../models/postModel');
 
 // /posts route controllers
 const getPosts = async (req, res, next) => {
