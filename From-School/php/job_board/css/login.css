@@ -1,0 +1,46 @@
+.form-container {
+    background-color: #cacc90;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 20px;
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+    background-clip: border-box;
+    width: 25%;
+    align-items: center;
+    text-align: center;
+}
+
+.seconnecter {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+}
+
+.seconnecter:hover {
+    opacity: 0.6;
+}
+
+input {
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+input[type="submit"] {
+    height: 40px;
+}
+
+main {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.socials {
+    color: #F4EBBE;
+}
