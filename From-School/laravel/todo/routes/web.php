@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('todo/todo-homepage');
+    return view('welcome');
 });
 
-Route::post('/', function () {
-    return view('todo/todo-homepage');
-});
+Route::resource('todo', TodoController::class);
