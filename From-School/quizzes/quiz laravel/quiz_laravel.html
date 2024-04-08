@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Laravel</title>
+    <link rel="stylesheet" href="./css/quiz_laravel.css">
+</head>
+        <body>
+            <div class="container">
+                <h1>Quiz Laravel</h1>
+                <div id="timer"></div>
+                <button type="button" id="startBtn">Commencer le quiz</button>
+                <div class="question" style="display: none;">
+                    <p>1. Dans quel répertoire les contrôleurs sont stockés dans Laravel? A app/http/Controllers B app/http/Views C
+                        app/http/Model D app/http/routes</p>
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        A) app/http/Controllers
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        B) app/http/Views
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        C) app/http/Model
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        D) app/http/routes
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>2. Qui a développé Laravel ? A Linus Torvalds B Taylor Otwell C James Gosling D Guido van Rossum</p>
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        A) Linus Torvalds
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        B) Taylor Otwell
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        C) James Gosling
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        D) Guido van Rossum
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>3. Qu’est-ce que Laravel ? A Langage de programmation B Framework PHP C Générateur de code D Aucun des éléments
+                        ci-dessus</p>
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        A) Langage de programmation
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        B) Framework PHP
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        C) Générateur de code
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        D) Aucun des éléments ci-dessus
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>4. A quoi sert le .env ? A Pour définir les variables d’environnement B Pour exécuter des tâches cron C Pour le
+                        suivi des vendors D Aucune de ces réponses</p>
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        A) Pour définir les variables d’environnement
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        B) Pour exécuter des tâches cron
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        C) Pour le suivi des vendors
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>5. Où devons-nous définir la connexion à la base de données dans Laravel ? A config.php B setting.php C Dans les
+                        fichiers d’amorçage D Fichier .ENV</p>
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        A) config.php
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        B) setting.php
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        C) Dans les fichiers d’amorçage
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        D) Fichier .ENV
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>6. Quand Laravel a-t-il été publié pour la première fois ? A Juin 2011 B Juin 2010 C Juin 2008 D Aucune de ces
+                        réponses</p>
+                    <label>
+                        <input type="radio" name="q6" value="A">
+                        A) Juin 2011
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="B">
+                        B) Juin 2010
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="C">
+                        C) Juin 2008
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q6" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>7. Quelle commande est de Laravel ? A git B composer C php artisan D php -v</p>
+                    <label>
+                        <input type="radio" name="q7" value="A">
+                        A) git
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="B">
+                        B) composer
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="C">
+                        C) php artisan
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q7" value="D">
+                        D) php -v
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>8. Comment créer un contrôleur dans Laravel avec CMD ? A php artisan make: generate controller mycontoller B php
+                        artisan make:controller generate C php artisan make:controller --plain D php artisan make:request mycontoller
+                        create</p>
+                    <label>
+                        <input type="radio" name="q8" value="A">
+                        A) php artisan make: generate controller mycontoller
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="B">
+                        B) php artisan make:controller generate
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="C">
+                        C) php artisan make:controller --plain
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q8" value="D">
+                        D) php artisan make:request mycontoller create
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>9. Les fichiers Vues (view) dans Laravel se termine par __________ A .php B .blade C .view D .blade.php</p>
+                    <label>
+                        <input type="radio" name="q9" value="A">
+                        A) .php
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="B">
+                        B) .blade
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="C">
+                        C) .view
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q9" value="D">
+                        D) .blade.php
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>10. Quelle commande est utilisée pour démarrer le serveur Laravel ? A php artisan serve B php artisan
+                        project_name C php artisan start php D artisan start-server</p>
+                    <label>
+                        <input type="radio" name="q10" value="A">
+                        A) php artisan serve
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="B">
+                        B) php artisan project_name
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="C">
+                        C) php artisan start php
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q10" value="D">
+                        D) artisan start-server
+                    </label><br>
+                </div>
+                
+                <!-- Continue adding questions from 11 to 60 -->
+                
+                <div class="question" style="display: none;">
+                    <p>11. Pourquoi Laravel utilise-t-il le moteur de template Blade ? A Pour simplifier la programmation B Comme modèle
+                        C Pour faciliter la création des contrôleurs D Pour la vue dans MVC</p>
+                    <label>
+                        <input type="radio" name="q11" value="A">
+                        A) Pour simplifier la programmation
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="B">
+                        B) Comme modèle
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="C">
+                        C) Pour faciliter la création des contrôleurs
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q11" value="D">
+                        D) Pour la vue dans MVC
+                    </label><br>
+                </div>
+
+
+                <div class="question" style="display: none;">
+                    <p>12. Laquelle des fonctions suivantes de Laravel vérifie que la table souhaitée existe ou non dans la base de
+                        données ? A hasTable() B hasTab() C hashTable() D Aucune de ces fonctions</p>
+                    <label>
+                        <input type="radio" name="q12" value="A">
+                        A) hasTable()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="B">
+                        B) hasTab()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="C">
+                        C) hashTable()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q12" value="D">
+                        D) Aucune de ces fonctions
+                    </label><br>
+                </div>
+                
+                <!-- Question 13 -->
+                <div class="question" style="display: none;">
+                    <p>13. Où se trouve le fichier de routage dans Laravel ? A app/Http/ B urls/ C vendors/ D routes/</p>
+                    <label>
+                        <input type="radio" name="q13" value="A">
+                        A) app/Http/
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="B">
+                        B) urls/
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="C">
+                        C) vendors/
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q13" value="D">
+                        D) routes/
+                    </label><br>
+                </div>
+                
+                <!-- Question 14 -->
+                <div class="question" style="display: none;">
+                    <p>14. Composer est un outil pour la ______ en PHP. A Interpolation B Configuration C Gestion des dépendances D
+                        Aucune de ces réponses</p>
+                    <label>
+                        <input type="radio" name="q14" value="A">
+                        A) Interpolation
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="B">
+                        B) Configuration
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="C">
+                        C) Gestion des dépendances
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q14" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <!-- Question 15 -->
+                <div class="question" style="display: none;">
+                    <p>15. Comment vérifier la version actuelle de Laravel sur votre système ? A php artisan check --version B php
+                        artisan make --version C php artisan --version D Aucune de ces réponses</p>
+                    <label>
+                        <input type="radio" name="q15" value="A">
+                        A) php artisan check --version
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="B">
+                        B) php artisan make --version
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="C">
+                        C) php artisan --version
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q15" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <!-- Question 16 -->
+                <div class="question" style="display: none;">
+                    <p>16. Quelle est la dernière version stable de Laravel ? A 7.0 B 8.0 C 9.0 D 10.0</p>
+                    <label>
+                        <input type="radio" name="q16" value="A">
+                        A) 7.0
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="B">
+                        B) 8.0
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="C">
+                        C) 9.0
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q16" value="D">
+                        D) 10.0
+                    </label><br>
+                </div>
+                
+                <!-- Question 17 -->
+                <div class="question" style="display: none;">
+                    <p>17. Où peut-on définir les relations dans les modèles Eloquent ? A Dans les fichiers de migration B Dans les
+                        fichiers de contrôleur C Dans les modèles D Aucune de ces réponses</p>
+                    <label>
+                        <input type="radio" name="q17" value="A">
+                        A) Dans les fichiers de migration
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="B">
+                        B) Dans les fichiers de contrôleur
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="C">
+                        C) Dans les modèles
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q17" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <!-- Question 18 -->
+                <div class="question" style="display: none;">
+                    <p>18. Laquelle des fonctions suivantes est utilisée pour échapper les variables dans Blade templates ? A @var B {{
+                        $var }} C {!! $var !!} D Aucune de ces fonctions</p>
+                    <label>
+                        <input type="radio" name="q18" value="A">
+                        A) @var
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="B">
+                        B) {{ $var }}
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="C">
+                        C) {!! $var !!}
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q18" value="D">
+                        D) Aucune de ces fonctions
+                    </label><br>
+                </div>
+                
+                <!-- Question 19 -->
+                <div class="question" style="display: none;">
+                    <p>19. Quelle est la structure d’organisation des fichiers dans Laravel ? A Modèle – Vue – Contrôleur B Contrôleur –
+                        Modèle – Vue C Vue – Contrôleur – Modèle D Aucune de ces réponses</p>
+                    <label>
+                        <input type="radio" name="q19" value="A">
+                        A) Modèle – Vue – Contrôleur
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="B">
+                        B) Contrôleur – Modèle – Vue
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="C">
+                        C) Vue – Contrôleur – Modèle
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q19" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <!-- Question 20 -->
+                <div class="question" style="display: none;">
+                    <p>20. Quelle méthode est utilisée pour démarrer une nouvelle session dans Laravel ? A start() B session() C make()
+                        D run()</p>
+                    <label>
+                        <input type="radio" name="q20" value="A">
+                        A) start()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="B">
+                        B) session()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="C">
+                        C) make()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q20" value="D">
+                        D) run()
+                    </label><br>
+                </div>
+
+                <div class="question" style="display: none;">
+                    <p>21. Comment récupérer le nom de l’action en cours dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q21" value="A">
+                        A) request()->getActionMethod()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="B">
+                        B) request()->route()->getActionMethod()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="C">
+                        C) request()->DB->getActionMethod()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q21" value="D">
+                        D) Aucun des éléments ci-dessus
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>22. Le répertoire Bootstrap dans Laravel est utilisé pour ______.</p>
+                    <label>
+                        <input type="radio" name="q22" value="A">
+                        A) Initialiser une application Laravel
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="B">
+                        B) Appeler les fonctions de la bibliothèque Laravel
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="C">
+                        C) Charger les fichiers de configuration
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q22" value="D">
+                        D) Charger les classes et modèles Laravel
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>23. Que signifie ORM dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q23" value="A">
+                        A) Object-related Modifier
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="B">
+                        B) Object-relational Mapping
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="C">
+                        C) Overloaded-relational Mapping
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q23" value="D">
+                        D) Object-Rotational Mechanism
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>24. Quelle commande est utilisée pour créer des migrations dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q24" value="A">
+                        A) php artisan make:migration
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="B">
+                        B) php artisan create:migration
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="C">
+                        C) php artisan generate:migration
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q24" value="D">
+                        D) php artisan migration:make
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>25. Quelle commande est utilisée pour créer un nouveau projet dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q25" value="A">
+                        A) php composer.phar create-project --pref-dist laravel/laravel p "6.2.*"
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="B">
+                        B) php composer.phar create-project --prefer-dist laravel/laravel p "6.2.*"
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="C">
+                        C) php compose.phar create-project --prefer-dist laravel/laravel p "6.2.*"
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q25" value="D">
+                        D) php composer.phar create-project --prefer-di laravel/laravel p "6.2.*"
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>26. Laquelle des commandes suivantes est utilisée pour supprimer le fichier de classe compilé dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q26" value="A">
+                        A) php artisan clear-compiled
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="B">
+                        B) php artisan down
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="C">
+                        C) php artisan clear-class
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q26" value="D">
+                        D) php artisan clear-compiled-file
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>27. Laquelle des méthodes de Collection suivantes renvoie tous les enregistrements d’une collection?</p>
+                    <label>
+                        <input type="radio" name="q27" value="A">
+                        A) ->get()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="B">
+                        B) ->whereAll()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="C">
+                        C) ->where()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q27" value="D">
+                        D) ->all()
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>28. Lequel des éléments suivants est un répertoire racine dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q28" value="A">
+                        A) bootstrap
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="B">
+                        B) public
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="C">
+                        C) app
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q28" value="D">
+                        D) vendor
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>29. À quoi sert un framework PHP ?</p>
+                    <label>
+                        <input type="radio" name="q29" value="A">
+                        A) Accélérer le processus de développement
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="B">
+                        B) Envoyer ou recevoir des cookies
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="C">
+                        C) Comprendre le langage de programmation
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q29" value="D">
+                        D) Codage
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>30. Quelle méthode est utilisée dans Laravel pour vérifier que la requête est ajax ou non ?</p>
+                    <label>
+                        <input type="radio" name="q30" value="A">
+                        A) $request->ajaxRun()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="B">
+                        B) $request->ajaxs()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="C">
+                        C) $request->ajax()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q30" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+
+                <div class="question" style="display: none;">
+                    <p>31. Comment récupérer l’environnement actuel dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q31" value="A">
+                        A) $environment = App::environment();
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q31" value="B">
+                        B) $environment = App::environ();
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q31" value="C">
+                        C) $environment = App::environments();
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q31" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>32. Quelle est la version minimale de PHP requise pour installer Laravel 5.3 ?</p>
+                    <label>
+                        <input type="radio" name="q32" value="A">
+                        A) 8
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q32" value="B">
+                        B) 5.3.2
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q32" value="C">
+                        C) 5.6.4
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q32" value="D">
+                        D) 7.1
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>33. Laravel est écrit en _____.</p>
+                    <label>
+                        <input type="radio" name="q33" value="A">
+                        A) PHP
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q33" value="B">
+                        B) JSP
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q33" value="C">
+                        C) ASP
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q33" value="D">
+                        D) Toutes les réponses sont vraies
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>34. Après avoir exécuté « artisan down », le projet affiche la page de maintenance. Quel serait le code de retour
+                        d’état HTTP ?</p>
+                    <label>
+                        <input type="radio" name="q34" value="A">
+                        A) 503
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q34" value="B">
+                        B) 400
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q34" value="C">
+                        C) 501
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q34" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>35. Quelle méthode divise la collection en plusieurs collections plus petites d’une taille donnée ?</p>
+                    <label>
+                        <input type="radio" name="q35" value="A">
+                        A) split()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q35" value="B">
+                        B) chunk()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q35" value="C">
+                        C) explode()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q35" value="D">
+                        D) break()
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>36. Interpolation de variable dans Laravel faite à l’aide de _____.</p>
+                    <label>
+                        <input type="radio" name="q36" value="A">
+                        A) helpers
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q36" value="B">
+                        B) compact
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q36" value="C">
+                        C) {{}}
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q36" value="D">
+                        D) Toutes les réponses sont vraies
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>37. Laravel prend-il en charge la mise en cache ?</p>
+                    <label>
+                        <input type="radio" name="q37" value="A">
+                        A) Oui
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q37" value="B">
+                        B) Non
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>38. Laquelle des commandes suivantes est utilisée pour créer un middleware dans Laravel?</p>
+                    <label>
+                        <input type="radio" name="q38" value="A">
+                        A) php artisan make:middleware
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q38" value="B">
+                        B) php artisan: middleware
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q38" value="C">
+                        C) php arti make:middleware
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q38" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>39. Quel type de méthode Laravel utilise-t-il pour récupérer les données d’une base de données ?</p>
+                    <label>
+                        <input type="radio" name="q39" value="A">
+                        A) ORM Eloquent
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q39" value="B">
+                        B) Query Builder
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q39" value="C">
+                        C) Eloquent ORM et Query Builder
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q39" value="D">
+                        D) Aucune des réponses ci-dessus
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>40. Quelle est la particularité d’Eloquent ORM ?</p>
+                    <label>
+                        <input type="radio" name="q40" value="A">
+                        A) Flexible
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q40" value="B">
+                        B) Horodatage
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q40" value="C">
+                        C) Un grand nombre de méthodes
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q40" value="D">
+                        D) Tout ce qui précède
+                    </label><br>
+                </div>
+
+                <div class="question" style="display: none;">
+                    <p>41. Laquelle des commandes suivantes est utilisée pour créer un lien symbolique du répertoire « public/storage »
+                        vers « storage/app/public ».</p>
+                    <label>
+                        <input type="radio" name="q41" value="A">
+                        A) storage:link
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q41" value="B">
+                        B) link:public
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q41" value="C">
+                        C) link:storage
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q41" value="D">
+                        D) storage:link public/storage
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>42. __() dans Laravel est utilisé pour __________</p>
+                    <label>
+                        <input type="radio" name="q42" value="A">
+                        A) Afficher une valeur
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q42" value="B">
+                        B) Pour la traduction de chaînes de caractères
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>43. Quel est le REPL utilisé dans Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q43" value="A">
+                        A) tinker
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q43" value="B">
+                        B) artisan
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q43" value="C">
+                        C) robots
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>44. Quelle est la commande pour créer un nouveau contrôleur ?</p>
+                    <label>
+                        <input type="radio" name="q44" value="A">
+                        A) php artisan create:controller MyController
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q44" value="B">
+                        B) php artisan new:controller MyController
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q44" value="C">
+                        C) php artisan make:controller MyController
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q44" value="D">
+                        D) php artisan MyController
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>45. Quelle commande est utilisée pour démarrer le serveur Laravel ?</p>
+                    <label>
+                        <input type="radio" name="q45" value="A">
+                        A) php artisan start:server
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q45" value="B">
+                        B) php artisan create:server
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q45" value="C">
+                        C) php artisan start
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q45" value="D">
+                        D) php artisan serve
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>46. Comment définir un mutateur ?</p>
+                    <label>
+                        <input type="radio" name="q46" value="A">
+                        A) setNameValue()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q46" value="B">
+                        B) setName()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q46" value="C">
+                        C) setAttribute(‘name’)
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q46" value="D">
+                        D) setNameAttribute()
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>47. Quelle commande est utilisée pour vider le cache d’une application ?</p>
+                    <label>
+                        <input type="radio" name="q47" value="A">
+                        A) php artisan cache:flush
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q47" value="B">
+                        B) php artisan cache:clear
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q47" value="C">
+                        C) php artisan cache:forget
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q47" value="D">
+                        D) php artisan cache:remove
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>48. Comment démarrer la file d’attente en utilisant la ligne de commande ?</p>
+                    <label>
+                        <input type="radio" name="q48" value="A">
+                        A) php artisan queue:work
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q48" value="B">
+                        B) php artisan queue:start
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q48" value="C">
+                        C) php artisan queue work
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q48" value="D">
+                        D) php artisan queue start
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>49. Quelle méthode retourne la valeur moyenne d’une clé donnée ?</p>
+                    <label>
+                        <input type="radio" name="q49" value="A">
+                        A) average()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q49" value="B">
+                        B) avg()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q49" value="C">
+                        C) median()
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q49" value="D">
+                        D) avg_val()
+                    </label><br>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>50. Quel répertoire contient le fichier « robot.txt » ?</p>
+                    <label>
+                        <input type="radio" name="q50" value="A">
+                        A) app
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q50" value="B">
+                        B) public
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q50" value="C">
+                        C) config
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q50" value="D">
+                        D) storage
+                    </label><br>
+                </div>
+
+                <div class="question" style="display: none;">
+                    <p>51. Quelles sont les bases de données disponibles supportées par Laravel ?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>52. Peut-on utiliser Laravel pour un développement complet (Frontend + Backend) ?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>53. Comment mettre les applications Laravel en mode maintenance ?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>54. Que sont les seeders dans Laravel ?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>55. Qu’est-ce qu’un modèle ?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>56. Que sont les façades dans Laravel?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>57. Que sont les événements dans Laravel ?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>58. Expliquer la journalisation dans Laravel ?</p>
+                    <p>Réponse</p>
+                </div>
+                
+                <div class="question" style="display: none;">
+                    <p>59. Qu'est-ce que la localisation dans Laravel ?</p>
+                    <p>Réponse</p>
+                </div>
+                <!-- Repeat for all questions -->
+        
+                <div class="question" style="display: none;">
+                    <p>60. À quoi servent les requêtes HTTP dans Laravel?</p>
+                    <label>
+                        <input type="radio" name="q60" value="A">
+                        A) Pour exécuter des tâches asynchrones
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q60" value="B">
+                        B) Pour recevoir des données du client vers le serveur
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q60" value="C">
+                        C) Pour manipuler les bases de données
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q60" value="D">
+                        D) Aucune de ces réponses
+                    </label><br>
+                </div>
+        
+                <button type="button" id="prevBtn" onclick="prevQuestion()">Précédent</button>
+                <button type="button" id="nextBtn" onclick="nextQuestion()">Suivant</button>
+                <button type="button" id="submitBtn" style="display: none;">Soumettre</button>
+                <div id="results"></div>
+            </div>
+
+    
+        <script src="./js/quiz_laravel.js"></script>
+    </body>
+    
+    </html>
+
+</body>
+</html>
