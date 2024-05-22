@@ -1,20 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Avatar></Avatar>
+  <meepLikesFish></meepLikesFish>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import meepLikesFish from './components/meepLikesFish.vue'
+import Avatar from './components/Avatar.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    meepLikesFish,
+    Avatar
   }
 }
 </script>
 
 <style>
+
+body {
+  background-color: #1be5dd;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
