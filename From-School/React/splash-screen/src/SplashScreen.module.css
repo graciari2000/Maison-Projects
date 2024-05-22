@@ -1,0 +1,14 @@
+
+.splashScreen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 91vh;
+}
+
+@media only screen and (max-width: 880px) {
+  
+  .splashScreen img{
+    width:20vw;
+  }
+}
