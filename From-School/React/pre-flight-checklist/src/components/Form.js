@@ -1,93 +1,126 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Import Axios
+import './signup-login.css';
 
 const Form = () => {
-    const { id } = useParams();
+    const [formData, setFormData] = useState({
+        title: '',
+        description: '',
+        tasks: [{ title: '', description: '' }]
+    });
+
     const navigate = useNavigate();
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [tasks, setTasks] = useState([{ title: '', description: '' }]);
 
-    useEffect(() => {
-        if (id) {
-            axios.get(`https://greenvelvet.alwaysdata.net/pfc/checklist?id=${id}`, {
-                headers: { 'token': '6fd4c879b87177f3ff643c90c64204bbd0760b2b' }
-            }).then(response => {
-                setTitle(response.data.title);
-                setDescription(response.data.description);
-                setTasks(response.data.tasks);
-            }).catch(error => {
-                console.error('Error fetching checklist:', error);
-            });
-        }
-    }, [id]);
-
-    const handleTaskChange = (index, field, value) => {
-        const newTasks = tasks.map((task, i) => (i === index ? { ...task, [field]: value } : task));
-        setTasks(newTasks);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
-    const handleSubmit = async () => {
-        const checklistData = { title, description, tasks };
-        const url = id ? 'https://greenvelvet.alwaysdata.net/pfc/checklist/update' : 'https://greenvelvet.alwaysdata.net/pfc/checklist/add';
+    const handleTaskChange = (index, e) => {
+        const { name, value } = e.target;
+        const tasks = [...formData.tasks];
+        tasks[index][name] = value;
+        setFormData((prevData) => ({ ...prevData, tasks }));
+    };
 
+    const handleAddTask = () => {
+        setFormData((prevData) => ({
+            ...prevData,
+            tasks: [...prevData.tasks, { title: '', description: '' }]
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            await axios.post(url, checklistData, {
-                headers: { 'token': '6fd4c879b87177f3ff643c90c64204bbd0760b2b' }
+            const response = await axios.post('https://greenvelvet.alwaysdata.net/pfc/checklist/add', formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    token: '23103ab7181a83f8cc1a3596c950c2a5101081f7'
+                }
             });
-            navigate('/');
+            const data = response.data;
+            console.log('Checklist added:', data);
+            navigate('/'); // Redirect to the Dashboard after successful submission
         } catch (error) {
-            console.error('Error saving checklist:', error);
+            console.error('Error adding checklist:', error);
         }
     };
 
     return (
-        <div className="container mx-auto">
-            <h1 className="text-2xl font-bold mb-4">{id ? 'Edit Checklist' : 'New Checklist'}</h1>
-            <div className="mb-4">
-                <label className="block mb-2">Title</label>
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="w-full p-2 border rounded"
-                />
+        <div className="min-h-screen p-8">
+            <div className="container mx-auto">
+                <h1 className="text-3xl font-bold mb-8">Create New Checklist</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">Checklist Title</label>
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Enter checklist title"
+                            value={formData.title}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="description" className="block text-gray-700 text-sm font-bold mb-2">Description</label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Enter checklist description"
+                            value={formData.description}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    {formData.tasks.map((task, index) => (
+                        <div key={index} className="mb-4">
+                            <label htmlFor={`taskTitle${index}`} className="block text-gray-700 text-sm font-bold mb-2">Task Title</label>
+                            <input
+                                type="text"
+                                id={`taskTitle${index}`}
+                                name="title"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Enter task title"
+                                value={task.title}
+                                onChange={(e) => handleTaskChange(index, e)}
+                                required
+                            />
+                            <label htmlFor={`taskDescription${index}`} className="block text-gray-700 text-sm font-bold mb-2 mt-4">Task Description</label>
+                            <textarea
+                                id={`taskDescription${index}`}
+                                name="description"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Enter task description"
+                                value={task.description}
+                                onChange={(e) => handleTaskChange(index, e)}
+                                required
+                            />
+                        </div>
+                    ))}
+                    <button
+                        type="button"
+                        onClick={handleAddTask}
+                        className="mb-4 font-bold py-2 px-4 mr-9 float-left rounded focus:outline-none focus:shadow-outline"
+                    >
+                        Add Task
+                    </button>
+                    <button
+                        type="submit"
+                        className="font-bold py-2 px-4 ml-9 float-right rounded focus:outline-none focus:shadow-outline"
+                    >
+                        Save Checklist
+                    </button>
+                </form>
             </div>
-            <div className="mb-4">
-                <label className="block mb-2">Description</label>
-                <input
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="w-full p-2 border rounded"
-                />
-            </div>
-            {tasks.map((task, index) => (
-                <div key={index} className="mb-4">
-                    <label className="block mb-2">Task {index + 1}</label>
-                    <input
-                        type="text"
-                        value={task.title}
-                        onChange={(e) => handleTaskChange(index, 'title', e.target.value)}
-                        placeholder="Title"
-                        className="w-full p-2 border rounded mb-2"
-                    />
-                    <input
-                        type="text"
-                        value={task.description}
-                        onChange={(e) => handleTaskChange(index, 'description', e.target.value)}
-                        placeholder="Description"
-                        className="w-full p-2 border rounded"
-                    />
-                </div>
-            ))}
-            <button onClick={() => setTasks([...tasks, { title: '', description: '' }])} className="btn btn-secondary mb-4">Add Task</button>
-            <button onClick={handleSubmit} className="btn btn-primary">Save Checklist</button>
         </div>
     );
 };
 
 export default Form;
-
 

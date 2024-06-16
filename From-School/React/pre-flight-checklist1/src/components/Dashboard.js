@@ -1,22 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getAuthToken } from './Auth';
 import './signup-login.css';
+import axios from 'axios';
 
 const Dashboard = () => {
     const [checklists, setChecklists] = useState([]);
+    const token = getAuthToken();
 
     useEffect(() => {
-        fetch('https://greenvelvet.alwaysdata.net/pfc/checklists', {
-            headers: { 'token': '6fd4c879b87177f3ff643c90c64204bbd0760b2b' }
-        })
-            .then(response => response.json())
-            .then(data => {
-                setChecklists(data.response);
-            })
-            .catch(error => {
-                console.error(error);
+        const fetchChecklists = async () => {
+            if (!token) {
+                console.error('No token found');
+                return;
+            }
+
+            try {
+                const response = await axios.get('https://greenvelvet.alwaysdata.net/pfc/checklists', {
+                    headers: { token: '23103ab7181a83f8cc1a3596c950c2a5101081f7' },
+                });
+                setChecklists(response.data.response);
+            } catch (error) {
+                console.error('Error fetching checklists:', error);
+            }
+        };
+
+        fetchChecklists();
+    }, [token]);
+
+    const handleDelete = async (id) => {
+        if (!token) {
+            console.error('No token found');
+            return;
+        }
+
+        try {
+            const response = await axios.delete(`https://greenvelvet.alwaysdata.net/pfc/checklist/delete/${id}`, {
+                headers: { token: '23103ab7181a83f8cc1a3596c950c2a5101081f7' },
             });
-    }, []);
+
+            if (response.data.success) {
+                setChecklists((prevChecklists) => prevChecklists.filter((checklist) => checklist.id !== id));
+            } else {
+                alert('Error deleting checklist');
+            }
+        } catch (error) {
+            console.error('Error deleting checklist:', error);
+        }
+    };
 
     return (
         <div className="min-h-screen p-8">
@@ -32,17 +63,29 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody className="text-gray-700">
-                            {checklists.map((checklist) => (
-                                <tr key={checklist.id} className="border-b border-gray-200">
-                                    <td className="py-3 px-4">{checklist.title}</td>
-                                    <td className="py-3 px-4">{checklist.description}</td>
-                                    <td className="py-3 px-4">
-                                        <Link to={`/checklist/${checklist.id}`} className="text-blue-500 hover:underline">
-                                            View
-                                        </Link>
-                                    </td>
+                            {checklists.length > 0 ? (
+                                checklists.map((checklist) => (
+                                    <tr key={checklist.id} className="border-b border-gray-200">
+                                        <td className="py-3 px-4">{checklist.title}</td>
+                                        <td className="py-3 px-4">{checklist.description}</td>
+                                        <td className="py-3 px-4">
+                                            <Link to={`/checklist/${checklist.id}`} className="hover:underline">
+                                                View
+                                            </Link>
+                                            <Link to={`/checklist/update/${checklist.id}`} className="hover:underline ml-4">
+                                                Edit
+                                            </Link>
+                                            <button onClick={() => handleDelete(checklist.id)} className="hover:underline ml-4">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td className="py-3 px-4 text-center" colSpan="3">No checklists available</td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
                 </div>

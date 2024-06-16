@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getAuthToken } from './Auth';
 import './signup-login.css';
 
 const Form = () => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
-        tasks: [{ title: '', description: '' }]
+        tasks: [{ title: '', description: '' }],
     });
-
     const navigate = useNavigate();
+    const token = getAuthToken();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,26 +27,26 @@ const Form = () => {
     const handleAddTask = () => {
         setFormData((prevData) => ({
             ...prevData,
-            tasks: [...prevData.tasks, { title: '', description: '' }]
+            tasks: [...prevData.tasks, { title: '', description: '' }],
         }));
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         try {
-            const response = await fetch('https://greenvelvet.alwaysdata.net/pfc/checklist/add', {
+            const response = await fetch('https://greenvelvet.alwaysdata.net/pfc/checklist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'token': '6fd4c879b87177f3ff643c90c64204bbd0760b2b'
+                    'token': token,
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData),
             });
             const data = await response.json();
-            console.log('Checklist added:', data);
-            navigate('/'); // Redirect to the Dashboard after successful submission
+            console.log('Checklist created:', data);
+            navigate('/'); // Redirect to the Dashboard after successful creation
         } catch (error) {
-            console.error('Error adding checklist:', error);
+            console.error('Error creating checklist:', error);
         }
     };
 
@@ -124,5 +125,3 @@ const Form = () => {
 };
 
 export default Form;
-
-

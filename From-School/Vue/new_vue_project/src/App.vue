@@ -1,24 +1,37 @@
 <template>
-  <Avatar></Avatar>
-  <meepLikesFish></meepLikesFish>
-
+  <div>
+    <Avatar />
+    <ConnectionLight />
+    <meepLikesFish />
+    <Spinner
+      :initialValue="0"
+      :minValue="0"
+      :maxValue="100"
+    />
+    <BoardPagination>bread</BoardPagination>
+  </div>
 </template>
 
 <script>
-import meepLikesFish from './components/meepLikesFish.vue'
-import Avatar from './components/Avatar.vue'
+import meepLikesFish from './components/meepLikesFish.vue';
+import Avatar from './components/Avatar.vue';
+import ConnectionLight from './components/ConnectionLight.vue';
+import Spinner from './components/Spinner.vue';
+import BoardPagination from './components/boardPagination.vue';
 
 export default {
   name: 'App',
   components: {
+    ConnectionLight,
     meepLikesFish,
-    Avatar
+    Avatar,
+    Spinner,
+    BoardPagination
   }
-}
+};
 </script>
 
 <style>
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

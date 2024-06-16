@@ -1,39 +1,104 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getAuthToken } from './Auth';
+import './signup-login.css';
 import axios from 'axios';
 
 const Dashboard = () => {
     const [checklists, setChecklists] = useState([]);
+    const token = getAuthToken();
 
     useEffect(() => {
-        axios.get('https://greenvelvet.alwaysdata.net/pfc/checklists', {
-            headers: { 'token': '6fd4c879b87177f3ff643c90c64204bbd0760b2b' }
-        }).then(response => {
-            setChecklists(response.data.response);
-        }).catch(error => {
-            console.error(error);
-        });
-    }, []);
+        const fetchChecklists = async () => {
+            if (!token) {
+                console.error('No token found');
+                return;
+            }
+
+            try {
+                const response = await axios.get('https://greenvelvet.alwaysdata.net/pfc/checklists', {
+                    headers: { token: '23103ab7181a83f8cc1a3596c950c2a5101081f7' },
+                });
+                setChecklists(response.data.response);
+            } catch (error) {
+                console.error('Error fetching checklists:', error);
+            }
+        };
+
+        fetchChecklists();
+    }, [token]);
+
+    const handleDelete = async (id) => {
+        if (!token) {
+            console.error('No token found');
+            return;
+        }
+
+        try {
+            const response = await axios.delete(`https://greenvelvet.alwaysdata.net/pfc/checklist/delete/${id}`, {
+                headers: { token: '23103ab7181a83f8cc1a3596c950c2a5101081f7' },
+            });
+
+            if (response.data.success) {
+                setChecklists((prevChecklists) => prevChecklists.filter((checklist) => checklist.id !== id));
+            } else {
+                alert('Error deleting checklist');
+            }
+        } catch (error) {
+            console.error('Error deleting checklist:', error);
+        }
+    };
 
     return (
-        <div className="container mx-auto">
-            <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-            <Link to="/form" className="btn btn-primary mb-4">New Checklist</Link>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {checklists.map(checklist => (
-                    <div key={checklist.id} className="p-4 border rounded shadow">
-                        <h2 className="text-xl font-semibold">{checklist.title}</h2>
-                        <p>{checklist.description}</p>
-                        <p>Status: {checklist.status}</p>
-                        <p>{checklist.tasks.length} tasks</p>
-                        <Link to={`/checklist/${checklist.id}`} className="btn btn-secondary">View</Link>
-                        <Link to={`/form/${checklist.id}`} className="btn btn-secondary">Edit</Link>
-                    </div>
-                ))}
+        <div className="min-h-screen p-8">
+            <div className="container mx-auto">
+                <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
+                <div className="bg-white shadow rounded-lg overflow-hidden">
+                    <table className="min-w-full bg-white">
+                        <thead className="bg-gray-200">
+                            <tr>
+                                <th className="py-3 px-4 text-left">Title</th>
+                                <th className="py-3 px-4 text-left">Description</th>
+                                <th className="py-3 px-4 text-left">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-gray-700">
+                            {checklists.length > 0 ? (
+                                checklists.map((checklist) => (
+                                    <tr key={checklist.id} className="border-b border-gray-200">
+                                        <td className="py-3 px-4">{checklist.title}</td>
+                                        <td className="py-3 px-4">{checklist.description}</td>
+                                        <td className="py-3 px-4">
+                                            <Link to={`/checklist/${checklist.id}`} className="hover:underline">
+                                                View
+                                            </Link>
+                                            <Link to={`/checklist/update/${checklist.id}`} className="hover:underline ml-4">
+                                                Edit
+                                            </Link>
+                                            <button onClick={() => handleDelete(checklist.id)} className="hover:underline ml-4">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td className="py-3 px-4 text-center" colSpan="3">No checklists available</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+                <div className="mt-9 float-right mb-4">
+                    <Link to="/form" className="font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        New
+                    </Link>
+                </div>
             </div>
         </div>
     );
 };
 
 export default Dashboard;
+
 

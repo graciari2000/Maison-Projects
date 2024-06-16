@@ -1,31 +1,36 @@
-// src/api/axiosConfig.js
-
 import axios from 'axios';
 
-// URL de base de l'API
-const BASE_URL = 'https://greenvelvet.alwaysdata.net/pfc/';
-
-// Créer une instance Axios
-const axiosInstance = axios.create({
-    baseURL: BASE_URL,
-    headers: {
-        'Content-Type': 'application/json',
-        'token': '6fd4c879b87177f3ff643c90c64204bbd0760b2b'
-    },
+const instance = axios.create({
+    baseURL: 'https://greenvelvet.alwaysdata.net/pfc',
+    timeout: 1000, // Adjust timeout as needed
 });
 
-// Ajouter un interceptueur de requête pour inclure le token d'authentification
-axiosInstance.interceptors.request.use(
-    config => {
-        const token = localStorage.getItem('token'); // Assurez-vous de stocker le token de manière sécurisée
+// Add request interceptor
+instance.interceptors.request.use(
+    (config) => {
+        // Do something before request is sent
+        const token = localStorage.getItem('6fd4c879b87177f3ff643c90c64204bbd0760b2b');
         if (token) {
-            config.headers['token'] = token;
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },
-    error => {
+    (error) => {
+        // Do something with request error
         return Promise.reject(error);
     }
 );
 
-export default axiosInstance;
+// Add response interceptor
+instance.interceptors.response.use(
+    (response) => {
+        // Do something with response data
+        return response;
+    },
+    (error) => {
+        // Do something with response error
+        return Promise.reject(error);
+    }
+);
+
+export default instance;
