@@ -1,34 +1,50 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.action_chains import ActionChains
-import time
+import asyncio
+from playwright.async_api import async_playwright  # type: ignore 
 
-# Setup the Chrome driver (make sure you have the right path to your driver)
-service = Service('../../From-School/Vue/new_vue_project/src/assets/chrome-win64/chrome-win64/chrome.exe')
-driver = webdriver.Chrome(service=service)
+async def main():
+    async with async_playwright() as p:
+        # Launch browser
+        browser = await p.chromium.launch(headless=False)  # Set headless to False to see the browser in action
+        page = await browser.new_page()
 
-# Navigate to Coolors.co
-driver.get('https://coolors.co/generate')
+        # Navigate to Coolors.co
+        await page.goto('https://coolors.co/generate')
 
-# Allow time for the page to load
-time.sleep(5)
+        # Allow time for the page to load
+        await page.wait_for_timeout(5000)
 
-# Find the 'Generate' button and click it
-generate_button = driver.find_element(By.CLASS_NAME, 'generator-menu-bar__button')
-generate_button.click()
+        # Press the spacebar to generate a new palette
+        try:
+            await page.keyboard.press('Space')
+        except Exception as e:
+            print(f"Error pressing spacebar: {e}")
+            await browser.close()
+            return
 
-# Allow time for the new palette to generate
-time.sleep(5)
+        # Allow time for the new palette to generate
+        await page.wait_for_timeout(5000)
 
-# Extract the color palette
-colors = driver.find_elements(By.CLASS_NAME, 'color')
-palette = [color.get_attribute('style').split(': ')[1].strip(';') for color in colors]
+        # Extract the color palette
+        try:
+            colors = await page.query_selector_all('.color')
+            if colors:
+                palette = [await color.inner_text() for color in colors]
+                color_names = [color.split("\n")[1] for color in palette]
 
-# Print the colors
-print("Generated Color Palette:")
-for color in palette:
-    print(color)
+                # Save the color names to a file
+                with open('color_names.txt', 'w') as file:
+                    file.write("Generated Color Names:\n")
+                    for name in color_names:
+                        file.write(f"{name}\n")
 
-# Close the browser
-driver.quit()
+                print("Color names saved to color_names.txt")
+            else:
+                print("Color elements not found.")
+        except Exception as e:
+            print(f"Error extracting color palette: {e}")
+
+        # Close the browser
+        await browser.close()
+
+# Run the script
+asyncio.run(main())
