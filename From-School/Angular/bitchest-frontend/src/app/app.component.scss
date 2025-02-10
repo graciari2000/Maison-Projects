@@ -1,0 +1,106 @@
+* {
+  font-family: "Inter";
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+header img {
+  width: 100px;
+  /* Adjust the size of your logo */
+}
+
+.hero-text {
+  text-align: center;
+  color: #01ff19;
+  font-family: "Sora", serif;
+}
+
+.hero-paragraph {
+  font-family: "Inter", serif;
+  text-align: center;
+  color: #38618c;
+}
+
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #38618c;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: "Inter", serif;
+}
+
+header a:last-child {
+  position: absolute;
+  right: 20px;
+  border-radius: 50px;
+  background-color: #01ff19;
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center; // Aligns items vertically
+  gap: 10px; // Adds spacing between elements
+  justify-content: center;
+}
+
+.label-container {
+  display: flex;
+  gap: 250px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.getstarted {
+  background-color: #01ff19;
+  font-family: "Inter";
+  border: none;
+}
+
+.starttrading {
+  background-color: #fff;
+  border: 2px solid #01ff19;
+  color: #01ff19;
+}
+
+.trade {
+background-color: #d9d9d9d9;
+padding: 50px;
+margin: 20px;
+margin-left: 200px;
+margin-right: 200px;
+}
+
+.buy-crypto {
+  background-color: #01ff19;
+  padding: 9px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 20px;
+}
+
+.getstarted, .starttrading {
+  border-radius: 50px;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.btn-container {
+  display: flex;
+  /* Use Flexbox to align items */
+  justify-content: center;
+  gap: 20px;
+  /* Center items horizontally */
+}

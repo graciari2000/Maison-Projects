@@ -1,0 +1,33 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap');
+</style>
+<div class="dashboard-container">
+  <header>
+    <img src="./assets/logo-bitchest.jpg" alt="ngngng">
+    <nav>
+      <a routerLink="/portfolio">Portfolio</a>
+      <a routerLink="/market">Market</a>
+      <a routerLink="/transactions">Transactions</a>
+      <img src="assets/light dark toggle.svg" alt="gg">
+      <a routerLink="/logout">Logout</a>
+    </nav>
+  </header>
+<hr>
+  <h1 class="hero-text">Secure and Intuitive<br> Crypto Trading</h1>
+  <p class="hero-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br>tempor incididunt ut labore et dolore magna
+  aliqua.</p>
+  <div class="btn-container"><button type="button" class="getstarted">Get Started</button><button type="button"
+      class="starttrading">Start
+      Trading</button></div>
+  <br>
+  <section class="trade">
+<div class="label-container"><label>Buy</label> <label>Sell</label></div>
+<div class="dropdown-container">
+  <app-dropdown></app-dropdown>
+  <img src="assets/backandforth.svg" alt="backandforth">
+  <app-dropdown></app-dropdown>   <button type="button" class="buy-crypto">Buy Crypto</button>
+</div>
+</section>
+
+<router-outlet></router-outlet> <!-- Loads current page -->
+

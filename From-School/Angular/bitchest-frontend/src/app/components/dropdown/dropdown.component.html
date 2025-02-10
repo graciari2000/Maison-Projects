@@ -1,0 +1,9 @@
+<div class="dropdown-container">
+  <div class="dropdown">
+    <input type="text" [(ngModel)]="selectedItem" (focus)="toggleDropdown(true)" (blur)="toggleDropdown(false)"
+      placeholder="Select an option..." readonly />
+    <ul class="dropdown-menu" *ngIf="isDropdownOpen">
+      <li *ngFor="let item of items" (click)="selectItem(item)">{{ item }}</li>
+    </ul>
+  </div>
+</div>

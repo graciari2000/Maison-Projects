@@ -1,0 +1,33 @@
+.register-container {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 5px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #034620;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.success {
+  color: green;
+  font-size: 14px;
+}

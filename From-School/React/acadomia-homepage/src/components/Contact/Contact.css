@@ -1,0 +1,42 @@
+.contact {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.contactInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.infoItem h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.infoItem p {
+    font-size: 16px;
+    color: #555555;
+}
+
+.contactBtn {
+    padding: 10px 20px;
+    background-color: #0d1d41;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contactBtn:hover {
+    background-color: #0f7a78;
+}
