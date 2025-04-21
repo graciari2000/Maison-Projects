@@ -8,7 +8,7 @@ const BookForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5173/api/books", book)
+        axios.post("http://localhost:5001/api/books", book)
             .then(() => alert("Livre ajouté !"))
             .catch((err) => console.error(err));
     };
@@ -21,6 +21,7 @@ const BookForm = () => {
                 <input type="text" name="author" placeholder="Auteur" className="form-control mt-2" onChange={handleChange} required />
                 <input type="text" name="genre" placeholder="Genre" className="form-control mt-2" onChange={handleChange} required />
                 <input type="number" name="price" placeholder="Prix (€)" className="form-control mt-2" onChange={handleChange} required />
+                <input type="image" name="image" placeholder="image" className="form-control mt-2" onChange={handleChange}/>
                 <button type="submit" className="btn btn-success mt-3">Ajouter</button>
             </form>
         </div>

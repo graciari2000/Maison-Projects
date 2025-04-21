@@ -8,7 +8,7 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5173/api/auth/register", user)
+        axios.post("http://localhost:5001/api/auth/register", user)
             .then(() => alert("Inscription réussie !"))
             .catch(() => alert("Erreur d'inscription."));
     };
