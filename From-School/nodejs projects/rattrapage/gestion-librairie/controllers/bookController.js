@@ -1,59 +1,32 @@
-const Book = require('../models/Book');
+const books = require("../models/bookModel");
+const generateId = require("../utils/uuid");
 
-// ✅ Get all books
-exports.getBooks = async (req, res) => {
-    try {
-        const books = await Book.find();
-        res.json(books);
-    } catch (error) {
-        res.status(500).json({ message: 'Erreur serveur.' });
-    }
+exports.getBooks = (req, res) => {
+    res.json(books);
 };
 
-// ✅ Get a single book by ID
-exports.getBookById = async (req, res) => {
-    try {
-        const book = await Book.findById(req.params.id);
-        if (!book) {
-            return res.status(404).json({ message: 'Livre non trouvé.' });
-        }
-        res.json(book);
-    } catch (error) {
-        res.status(500).json({ message: 'Erreur serveur.' });
-    }
+exports.getBookById = (req, res) => {
+    const book = books.find(b => b.id === req.params.id);
+    if (!book) return res.status(404).json({ message: "Livre introuvable" });
+    res.json(book);
 };
 
-// ✅ Add a new book
-exports.addBook = async (req, res) => {
-    try {
-        const newBook = new Book(req.body);
-        await newBook.save();
-        res.status(201).json(newBook);
-    } catch (error) {
-        res.status(500).json({ message: 'Erreur serveur.' });
-    }
+exports.createBook = (req, res) => {
+    const newBook = { id: generateId(), ...req.body };
+    books.push(newBook);
+    res.status(201).json(newBook);
 };
 
-// ✅ Update a book
-exports.updateBook = async (req, res) => {
-    try {
-        const updatedBook = await Book.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true }
-        );
-        res.json(updatedBook);
-    } catch (error) {
-        res.status(500).json({ message: 'Erreur serveur.' });
-    }
+exports.updateBook = (req, res) => {
+    const index = books.findIndex(b => b.id === req.params.id);
+    if (index === -1) return res.status(404).json({ message: "Livre introuvable" });
+    books[index] = { ...books[index], ...req.body };
+    res.json(books[index]);
 };
 
-// ✅ Delete a book
-exports.deleteBook = async (req, res) => {
-    try {
-        await Book.findByIdAndDelete(req.params.id);
-        res.json({ message: 'Livre supprimé.' });
-    } catch (error) {
-        res.status(500).json({ message: 'Erreur serveur.' });
-    }
+exports.deleteBook = (req, res) => {
+    const index = books.findIndex(b => b.id === req.params.id);
+    if (index === -1) return res.status(404).json({ message: "Livre introuvable" });
+    books.splice(index, 1);
+    res.json({ message: "Livre supprimé" });
 };

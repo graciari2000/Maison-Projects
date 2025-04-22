@@ -1,26 +1,19 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/authRoutes');
-const bookRoutes = require('./routes/bookRoutes');
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
-dotenv.config();
-connectDB();
+const bookRoutes = require("./routes/bookRoutes");
+const authorRoutes = require("./routes/authorRoutes");
+const loanRoutes = require("./routes/loanRoutes");
 
 const app = express();
 
-// ✅ Config CORS
-app.use(cors({
-    origin: 'http://localhost:5173', // autoriser cette origine
-    credentials: true
-}));
-
+app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/books', bookRoutes);
+app.use("/api/books", bookRoutes);
+app.use("/api/authors", authorRoutes);
+app.use("/api/loans", loanRoutes);
 
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`🚀 Serveur démarré sur le port ${PORT}`));
+app.listen(PORT, () => console.log(`📚 Library API running on port ${PORT}`));

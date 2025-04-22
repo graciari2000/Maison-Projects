@@ -1,18 +1,11 @@
-const express = require('express');
-const {
-    getBooks,
-    getBookById, // <- ADD THIS
-    addBook,
-    updateBook,
-    deleteBook
-} = require('../controllers/bookController');
-const authMiddleware = require('../middlewares/authMiddleware');
+const express = require("express");
 const router = express.Router();
+const bookController = require("../controllers/bookController");
 
-router.get('/', getBooks);
-router.get('/:id', getBookById); // <- ADD THIS LINE
-router.post('/', authMiddleware, addBook);
-router.put('/:id', authMiddleware, updateBook);
-router.delete('/:id', authMiddleware, deleteBook);
+router.get("/", bookController.getBooks);
+router.get("/:id", bookController.getBookById);
+router.post("/", bookController.createBook);
+router.put("/:id", bookController.updateBook);
+router.delete("/:id", bookController.deleteBook);
 
 module.exports = router;
