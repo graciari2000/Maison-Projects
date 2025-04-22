@@ -8,7 +8,7 @@ const BookForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5001/api/books", book)
+        axios.post("http://localhost:5001/api/bookform", book)
             .then(() => alert("Livre ajouté !"))
             .catch((err) => console.error(err));
     };

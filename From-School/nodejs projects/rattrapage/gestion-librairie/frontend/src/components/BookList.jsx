@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 
@@ -20,7 +21,11 @@ const BookList = () => {
                       <img src={book.image} alt={book.title} />
                       <h3>{book.title}</h3>
                       <p>{book.author}</p>
-                      <p>{book.price} €</p>
+                        <Link to={`/cart/${book._id}`}>
+                            <p style={{ color: 'blue', cursor: 'pointer' }}>
+                              {book.price} €
+                            </p>
+                          </Link>
                     </div>
                   ))}
                 </div>
