@@ -1,4 +1,4 @@
-const books = require("../models/bookModel");
+const books = require("../models/Book");
 const generateId = require("../utils/uuid");
 
 exports.getBooks = (req, res) => {

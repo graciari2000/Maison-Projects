@@ -1,5 +1,5 @@
-const loans = require("../models/loanModel");
-const books = require("../models/bookModel");
+const loans = require("../models/Loan");
+const books = require("../models/Book");
 const generateId = require("../utils/uuid");
 
 exports.getLoans = (req, res) => {

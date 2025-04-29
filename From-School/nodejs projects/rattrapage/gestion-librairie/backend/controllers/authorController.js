@@ -1,4 +1,4 @@
-const authors = require("../models/authorModel");
+const authors = require("../models/Author");
 const generateId = require("../utils/uuid");
 
 exports.getAuthors = (req, res) => {
