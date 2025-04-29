@@ -8,7 +8,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5001/api/auth/login", user)
+        axios.post("http://localhost:5001/api/users/login", user)
             .then((res) => {
                 localStorage.setItem("token", res.data.token);
                 alert("Connexion réussie !");

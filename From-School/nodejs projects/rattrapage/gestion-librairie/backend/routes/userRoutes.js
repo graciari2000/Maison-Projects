@@ -1,9 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const userController = require("../controllers/userController");
 
-// Example: a GET endpoint for users
-router.get('/', (req, res) => {
-    res.send('User route is working!');
-});
+router.post("/login", userController.login);
 
 module.exports = router;
