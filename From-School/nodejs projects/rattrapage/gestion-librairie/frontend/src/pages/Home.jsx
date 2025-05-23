@@ -1,10 +1,9 @@
 import BookList from "../components/BookList";
+import Navbar from "../components/Navbar"
 
 const Home = () => {
     return (
-        <div>
-            <BookList />
-        </div>
+        <><Navbar /><BookList /></>
     );
 };
 
